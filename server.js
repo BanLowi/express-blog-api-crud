@@ -5,6 +5,8 @@ const postRouter = require("./routers/posts");
 
 app.use(express.static("public"));
 
+app.use(express.json())
+
 app.listen(port, () => {
 
     console.log(`This server is running at port: ${port}`);
