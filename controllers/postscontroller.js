@@ -45,6 +45,24 @@ function store(req, res) {
 }
 
 function update(req, res) {
+
+    const id = parseInt(req.params.id)
+
+    const findPost = posts.find(post => post.id == id);
+
+    if (!findPost) {
+
+        return res.status(404).json({
+            error: "Not Found",
+            message: "Post not found"
+        })
+    }
+
+    findPost.title = req.body.title;
+    findPost.image = req.body.image;
+    findPost.content = req.body.content;
+    findPost.tags = req.body.tags;
+
     res.send(`Update the post with this id: ${req.params.id}`)
 }
 
